@@ -18,7 +18,7 @@ int main()
             break;
         }
         fprintf(errp->err_fp, "DEBUG: Using library version: %s\n", ssd1306_fb_version());
-        fbp = ssd1306_framebuffer_create(128, 32, errp);
+        fbp = ssd1306_framebuffer_create(128, 64, errp);
         if (!fbp) {
             rc = -1;
             break;

@@ -10,7 +10,7 @@ int main ()
 {
     fprintf(stderr, "DEBUG: Using library version: %s\n", ssd1306_i2c_version());
 	const char *filename = "/dev/i2c-1";
-    ssd1306_i2c_t *oled = ssd1306_i2c_open(filename, 0x3d, 128, 64, NULL);
+    ssd1306_i2c_t *oled = ssd1306_i2c_open(filename, 0x3c, 128, 64, NULL);
     if (!oled) {
         return -1;
     }

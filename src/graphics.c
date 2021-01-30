@@ -232,7 +232,7 @@ static int ssd1306_font_render_string(ssd1306_framebuffer_t *fbp,
                     memset(serrbuf, 0, sizeof(serrbuf));
                     strerror_r(serrno, serrbuf, sizeof(serrbuf));
                     serrbuf[255] = '\0';
-                    fprintf(err_fp, "ERROR: Tried reading '%s'. Error: %s(%d)\n", font_file,
+                    fprintf(err_fp, "ERROR: Tried reading '%s' (0x%X). Error: %s(%d)\n", font_file, &font_file, 
                                     serrbuf, serrno);
                     rc = -1;
                     break;

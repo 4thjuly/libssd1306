@@ -34,6 +34,7 @@ ssd1306_i2c_display_clear(oled::ssd1306_i2c_t) = @ccall SSD1306.ssd1306_i2c_disp
 ssd1306_framebuffer_destroy(fbp::ssd1306_framebuffer_t) = @ccall SSD1306.ssd1306_framebuffer_destroy(fbp::Ptr{Cvoid})::Cvoid
 ssd1306_i2c_close(oled::ssd1306_i2c_t) = @ccall SSD1306.ssd1306_i2c_close(oled::Ptr{Cvoid})::Cvoid
 ssd1306_framebuffer_draw_text(fbp, str, x, y, fontface, font_size) = @ccall SSD1306.ssd1306_framebuffer_draw_text(fbp::Ptr{Cvoid}, str::Cstring, 0::Cuint, x::UInt8, y::UInt8, fontface::Cint, font_size::UInt8, C_NULL::Ptr{Cvoid})::Cint
+ssd1306_framebuffer_clear(fbp) = @ccall SSD1306.ssd1306_framebuffer_clear(fbp::Ptr{Cvoid})::Cint
 
 function main()
     oled = ssd1306_i2c_open("/dev/i2c-1", 0x3c, 128, 64, C_NULL)
@@ -42,7 +43,7 @@ function main()
     errp = ssd1306_err_create()
     fbp = ssd1306_framebuffer_create(128, 64, errp)
     # err = ssd1306_framebuffer_draw_line(fbp, 0, 0, 127, 63, true)
-    ssd1306_framebuffer_draw_text(fbp, "TEST", 32, 16, SSD1306_FONT_FREEMONO, 2);
+    ssd1306_framebuffer_draw_text(fbp, "01234 - TEST", 32, 16, SSD1306_FONT_FREEMONO, 4);
     ssd1306_i2c_display_update(oled, fbp)
     sleep(5)
     ssd1306_framebuffer_destroy(fbp)
